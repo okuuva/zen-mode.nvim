@@ -57,10 +57,12 @@ Install the plugin with your preferred package manager:
 
 ```lua
 {
+  border = "none",
+  zindex = 40, -- zindex of the zen window. Should be less than 50, which is the float default
   window = {
-    backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+    backdrop = 0.95, -- shade the backdrop of the zen window. Set to 1 to keep the same as Normal
     -- height and width can be:
-    -- * an absolute number of cells when > 1
+    -- * an asbolute number of cells when > 1
     -- * a percentage of the width / height of the editor when <= 1
     -- * a function that returns the width or the height
     width = 120, -- width of the Zen window
@@ -91,6 +93,7 @@ Install the plugin with your preferred package manager:
     twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
     gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = false }, -- disables the tmux statusline
+    diagnostics = { enabled = false }, -- disables diagnostics
     todo = { enabled = false }, -- if set to "true", todo-comments.nvim highlights will be disabled
     -- this will change the font size on kitty when in zen mode
     -- to make this work, you need to set the following kitty options:
@@ -117,26 +120,24 @@ Install the plugin with your preferred package manager:
     -- this will change the scale factor in Neovide when in zen mode
     -- See alse also the Plugins/Wezterm section in this projects README
     neovide = {
-        enabled = false,
-        -- Will multiply the current scale factor by this number
-        scale = 1.2
-        -- disable the Neovide animations while in Zen mode
-        disable_animations = {
-                neovide_animation_length = 0,
-                neovide_cursor_animate_command_line = false,
-                neovide_scroll_animation_length = 0,
-                neovide_position_animation_length = 0,
-                neovide_cursor_animation_length = 0,
-                neovide_cursor_vfx_mode = "",
-            }
+      enabled = false,
+      -- Will multiply the current scale factor by this number
+      scale = 1.2,
+      -- disable the Neovide animations while in Zen mode
+      disable_animations = {
+        neovide_animation_length = 0,
+        neovide_cursor_animate_command_line = false,
+        neovide_scroll_animation_length = 0,
+        neovide_position_animation_length = 0,
+        neovide_cursor_animation_length = 0,
+        neovide_cursor_vfx_mode = "",
+      },
     },
   },
-  -- callback where you can add custom code when the Zen window opens
-  on_open = function(win)
-  end,
-  -- callback where you can add custom code when the Zen window closes
-  on_close = function()
-  end,
+  -- callback where you can add custom code when the zen window opens
+  on_open = function(_win) end,
+  -- callback where you can add custom code when the zen window closes
+  on_close = function() end,
 }
 ```
 
